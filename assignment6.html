@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Assignment 6 </title>
+<style>
+
+
+	</style>
+</head>
+
+<body>
+	<h1 style ="font-family: sans-serif; color: #0033cc;" >Amicable Numbers</h1>
+
+
+<script language = "javascript">
+
+	function isAFactor(x,y)
+	{
+		if (x%y == 0)
+			{
+				return true;
+			}
+		return false;
+	}
+	
+
+	function factorArray(n)
+	{
+		arr = [];
+		for (i=1; i<n; i++)
+		{
+			if (isAFactor(n,i)==true)
+			{
+				arr.push(i);
+			}
+		}
+		return arr;
+	}
+
+	function sumArr(x)
+	{
+		sum = 0;
+		for (j=0; j<x.length; j++)
+		{
+			sum = sum+x[j];
+		}
+		return sum;
+	}
+
+	function isAmicable(x,y)
+	{
+		if (x == y)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	function returnDiv(a,b,c,d)
+	{
+		if (c==true && d==true)
+		{
+			document.getElementById("amicable").innerHTML = "The numbers: "+ a + " and " + b + " are amicable.";
+		}
+		else
+		{
+			document.getElementById("amicable").innerHTML = "The numbers: "+ a + " and " + b + " are not amicable.";
+		}
+	}
+
+
+	function getNums()
+	{
+		a = document.getElementById("number1").value;
+		b = document.getElementById("number2").value;
+	
+		factors1 = factorArray(a);
+		factors2 = factorArray(b);
+		
+		sum1 = sumArr(factors1);
+		sum2 = sumArr(factors2);
+
+		comparison1 = isAmicable(sum1,b);
+		comparison2 = isAmicable(sum2,a);
+
+		amicable = returnDiv(a,b,comparison1,comparison2);
+
+		alert("factors of first number: "+ factors1 + "\nsum of factors: " + sum1 + "\nfactors of second number: " + factors2 + "\nsum of factors: " + sum2);
+	}
+
+	
+</script>
+
+	<form>
+		First number: <input type = "text" id = "number1"> &nbsp;
+		Second number: <input type = "text" id = "number2">
+		<br> <br>
+		<input type = "button" value = "Test Amicability" onclick = "getNums()">
+	</form>
+
+	<div style = "color: #0033cc;"> 
+   		 	<p id="amicable"></p>
+  	</div>
+
+</body>
+
+</html>
